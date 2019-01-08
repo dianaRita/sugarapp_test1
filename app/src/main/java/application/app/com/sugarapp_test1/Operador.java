@@ -60,9 +60,9 @@ public class Operador {
     }
 
     public String[] eliminar(){
-        long fin = System.currentTimeMillis();
-        int i = SugarRecord.deleteAll(Datos.class);
         long ini = System.currentTimeMillis();
+        int i = SugarRecord.deleteAll(Datos.class);
+        long fin = System.currentTimeMillis();
         String[] rslt = {"ELI", "tiempo: "+( fin-ini ), "cpu", "ram", "Del: " + i };
         return rslt;
     }
