@@ -1,32 +1,43 @@
 package application.app.com.sugarapp_test1;
 
-import android.util.Base64;
-
 import com.orm.SugarRecord;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import application.app.com.sugarapp_test1.daoEntity.Datos;
 
 public class Operador {
 
+    /**
+     * Crea un objeto de tipo Datos.
+     * Se utiliza para generar nuevos datos aleatorios
+     * @return dts Datos
+     */
+    private Datos genDatos(){
+        Random r = new Random(System.currentTimeMillis());
+        long x = r.nextLong();
+        int i = 1+r.nextInt(1000000);
+        double d = 1+r.nextDouble();
+        String t = new BigInteger(130,r).toString(36);
+        Date f  = new Date((x<0)?(x/6000000)*-1:x/6000000) ;
+        boolean b = ( ( i%2 ) == 0 ) ? true : false;
+
+        Datos dts = new Datos( i, d, t, f, b );
+
+        return dts;
+    }
+
+
     public String[] insertar(Integer c){
 
-        Datos d;
         long id = -1;
         long ini = System.currentTimeMillis();
         for (int i = 0; i < c; i++) {
-
-            d = new Datos(
-                    new Integer( i ),
-                    new Double( ( int ) ( Math.random() * 100000 ) + 1 ),
-                    Base64.encodeToString( ( (c+i)+"").getBytes(),Base64.DEFAULT ),
-                    new Date( Long.parseLong(( ( int ) ( Math.random() * 100000 ) + 1 ) + "" )),
-                    ( ( i%2 ) == 0 ) ? true : false
-            );
-            id = d.save();
+            id = genDatos().save();
         }
         long fin = System.currentTimeMillis();
         String[] rslt = { "INS", "tiempo: "+(fin-ini), "cpu", "ram", "id: "+id+"" };
