@@ -64,4 +64,13 @@ public class Datos extends SugarRecord {
     public void setNumBool(Boolean numBool) {
         this.numBool = numBool;
     }
+
+    @Override
+    public String toString() {
+        return  integer +
+                " " + real +
+                " " + text + '\'' +
+                " " + numDate +
+                " " + numBool ;
+    }
 }

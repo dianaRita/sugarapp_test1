@@ -3,12 +3,14 @@ package application.app.com.sugarapp_test1;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button btnIns, btnCons, btnAct, btnElim;
     private TextView tCant, tCnsl;
+    private ProgressBar prgrs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         this.btnCons = findViewById(R.id.btnCons);
         this.btnAct = findViewById(R.id.btnAct);
         this.btnElim = findViewById(R.id.btnElim);
+        //this.prgrs = findViewById(R.id.prgrs);
+
 
         this.tCant = findViewById(R.id.tCant);
         this.tCnsl = findViewById(R.id.tCnsl);
@@ -51,4 +55,6 @@ public class MainActivity extends AppCompatActivity {
     public TextView gettCnsl() {
         return tCnsl;
     }
+
+    public ProgressBar getPrgrs() { return prgrs; }
 }

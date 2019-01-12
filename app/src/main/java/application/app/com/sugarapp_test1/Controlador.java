@@ -23,6 +23,7 @@ public class Controlador {
             public void onClick(View v) {
                 if (btn.getText().equals("Insertar")){
                     Integer c = new Integer( Integer.parseInt( m.gettCant().getText().toString() ) );
+                    estado("INS");
                     String[] r = op.insertar(c);
                     Log.e("Mensaje", ">>>>> " + r[0] + " " + r[1] + " " + r[2] + " " + r[3] + " " + r[4]);
                 }
@@ -35,7 +36,8 @@ public class Controlador {
                 if (btn.getText().equals("Actualizar")){
                     Toast.makeText( m.getApplicationContext(), "Actualizar",Toast.LENGTH_LONG ).show();
                     String[] r = op.actualizar();
-                    Log.e("Mensaje", ">>>>> " + r[0] + " " + r[1] + " " + r[2] + " " + r[3]);
+                    m.gettCnsl().setText( r[5] );
+                    Log.e("Mensaje", ">>>>> " + r[0] + " " + r[1] + " " + r[2] + " " + r[3] + " " + r[4]);
                 }
                 if (btn.getText().equals("Eliminar")){
                     Toast.makeText( m.getApplicationContext(), "Eliminar",Toast.LENGTH_LONG ).show();
@@ -58,7 +60,7 @@ public class Controlador {
     private void estado(String e){
         switch (e){
             case "INS":
-
+                //m.getPrgrs().setVisibility(View.GONE);
                 break;
             case "CON":
 

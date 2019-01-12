@@ -53,12 +53,7 @@ public class Operador {
 
         String stDts = "";
         for ( Datos d: dts ) {
-            stDts = d.getInteger()
-                    +" "+d.getReal()
-                    +" "+d.getText()
-                    +" "+d.getNumDate()
-                    +" "+d.getNumBool()
-                    +"\n"+stDts;
+            stDts = d.toString() + "\n"+stDts;
         }
 
         String[] rslt = { "CON", "tiempo: "+( fin-ini ), "cpu", "ram", stDts };
@@ -66,7 +61,21 @@ public class Operador {
     }
 
     public String[] actualizar(){
-        String[] rslt = {"ACT", "tiempo", "cpu", "ram"};
+
+        String stDts = "";
+        long n = SugarRecord.count(Datos.class);
+        long id = SugarRecord.first(Datos.class).getId();
+        long up = -1;
+        long ini = System.currentTimeMillis();
+        for ( long i = 0 ; i < n; i++) {
+            Datos d = genDatos();
+            d.setId(id);
+            up = d.update();
+            stDts = d.toString() + "\n"+stDts;
+            id++;
+        }
+        long fin = System.currentTimeMillis();
+        String[] rslt = {"ACT", "tiempo: "+( fin-ini ), "cpu", "ram", "fin: " + up, stDts };
         return rslt;
     }
 
