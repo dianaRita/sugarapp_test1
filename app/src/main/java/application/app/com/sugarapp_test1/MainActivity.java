@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -11,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnIns, btnCons, btnAct, btnElim;
     private TextView tCant, tCnsl;
     private ProgressBar prgrs;
+    private Switch swtch;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
         this.btnCons = findViewById(R.id.btnCons);
         this.btnAct = findViewById(R.id.btnAct);
         this.btnElim = findViewById(R.id.btnElim);
-        //this.prgrs = findViewById(R.id.prgrs);
+        this.prgrs = findViewById(R.id.prgrs);
+        this.swtch = findViewById(R.id.swch);
 
 
         this.tCant = findViewById(R.id.tCant);
@@ -57,4 +61,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public ProgressBar getPrgrs() { return prgrs; }
+
+    public Switch getSwtch() { return swtch; }
 }
