@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tCant, tCnsl;
     private ProgressBar prgrs;
     private Switch swtch;
+    private TextView tMem;
 
 
     @Override
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         this.btnElim = findViewById(R.id.btnElim);
         this.prgrs = findViewById(R.id.prgrs);
         this.swtch = findViewById(R.id.swch);
+        this.tMem = findViewById(R.id.tvwMem);
 
 
         this.tCant = findViewById(R.id.tCant);
@@ -63,4 +65,6 @@ public class MainActivity extends AppCompatActivity {
     public ProgressBar getPrgrs() { return prgrs; }
 
     public Switch getSwtch() { return swtch; }
+
+    public TextView gettMem() { return tMem; }
 }

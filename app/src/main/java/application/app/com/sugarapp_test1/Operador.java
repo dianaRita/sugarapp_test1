@@ -1,5 +1,9 @@
 package application.app.com.sugarapp_test1;
 
+import android.app.ActivityManager;
+import android.os.Debug;
+import android.util.Log;
+
 import com.orm.SugarRecord;
 
 import java.math.BigInteger;
@@ -11,6 +15,20 @@ import java.util.Random;
 import application.app.com.sugarapp_test1.daoEntity.Datos;
 
 public class Operador {
+
+    ActivityManager act;
+
+    public Operador(ActivityManager act) {
+        this.act = act;
+    }
+
+    public long getMemory(){
+        ActivityManager.MemoryInfo mInfo = new ActivityManager.MemoryInfo();
+        act.getMemoryInfo(mInfo);
+
+        return ((mInfo.totalMem - mInfo.availMem)/(1024*1024));
+    }
+
 
     /**
      * Crea un objeto de tipo Datos.
@@ -35,12 +53,20 @@ public class Operador {
     public String[] insertar(Integer c){
 
         long id = -1;
+        long memTotUseProm =0;
+        long memIniUse = getMemory();
         long ini = System.currentTimeMillis();
         for (int i = 0; i < c; i++) {
             id = genDatos().save();
+            memTotUseProm += getMemory();
         }
         long fin = System.currentTimeMillis();
-        String[] rslt = { "INS", "tiempo: "+(fin-ini), "cpu", "ram", "id: "+id+"" };
+        memTotUseProm = memTotUseProm/c;
+        long memUseApp = memTotUseProm-memIniUse;
+        Log.e("operacion", "mem ini used: "+memIniUse+"");
+        Log.e("operacion", "mem tot used prom: "+memTotUseProm+"");
+        Log.e("operacion", "mem Use app: "+memUseApp+"");
+        String[] rslt = { "INS", "tiempo: "+(fin-ini), "cpu", "ram: "+(memUseApp)+"Mb", "id: "+id+"" };
         return rslt;
     }
 
@@ -61,9 +87,11 @@ public class Operador {
     }
 
     public String[] actualizar(){
-
-        String stDts = "";
         long n = SugarRecord.count(Datos.class);
+        if (n<=0){
+            String[] rslt = {"ACT", "0", "0", "0", "No existen datos a ser modificados" };
+            return rslt;
+        }
         long id = SugarRecord.first(Datos.class).getId();
         long up = -1;
         long ini = System.currentTimeMillis();
@@ -71,11 +99,16 @@ public class Operador {
             Datos d = genDatos();
             d.setId(id);
             up = d.update();
-            stDts = d.toString() + "\n"+stDts;
             id++;
         }
         long fin = System.currentTimeMillis();
-        String[] rslt = {"ACT", "tiempo: "+( fin-ini ), "cpu", "ram", "fin: " + up, stDts };
+        String[] rslt = {
+                "ACT",
+                ( fin-ini )+"ms",
+                "ram",
+                "Registros Actualizados" + up,
+                "Actualización exitosa"
+        };
         return rslt;
     }
 

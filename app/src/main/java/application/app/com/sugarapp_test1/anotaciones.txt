@@ -1,0 +1,8 @@
+- Modificar interface de la app
+- Agregar comparación en controlador.hiloInserta() para diferenciar entre tipos de inserción
+- Crear método operador.insertaAleatorio() y operador.inserta()
+- Crear método operador.actualizaAleatorio() y operador.actualiza()
+- Modificar operador.getMemory()
+- Crear método controlador.muestraResultados()
+- Implementar hilos para las demás operaciones en controlador;
+- Documentar todos los métodos como para reutilizar en las demás apps
