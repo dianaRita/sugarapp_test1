@@ -5,7 +5,6 @@ import com.orm.dsl.Table;
 
 import java.util.Date;
 
-@Table(name="datos")
 public class Datos extends SugarRecord {
 
     private Integer integer;

@@ -13,8 +13,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView tCant, tCnsl;
     private ProgressBar prgrs;
     private Switch swtch;
-    private TextView tMem;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
         this.btnElim = findViewById(R.id.btnElim);
         this.prgrs = findViewById(R.id.prgrs);
         this.swtch = findViewById(R.id.swch);
-        this.tMem = findViewById(R.id.tvwMem);
-
 
         this.tCant = findViewById(R.id.tCant);
         this.tCnsl = findViewById(R.id.tCnsl);
@@ -35,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
         new Controlador(this);
 
     }
-
-
 
     public Button getBtnIns() {
         return btnIns;
@@ -66,5 +60,4 @@ public class MainActivity extends AppCompatActivity {
 
     public Switch getSwtch() { return swtch; }
 
-    public TextView gettMem() { return tMem; }
 }
