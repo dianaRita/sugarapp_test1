@@ -1,5 +1,4 @@
 
-- Crear método controlador.verificaNume() para que verifique que el usuario haya ingresado un numero válido
-- Crear método operador.actualizaAleatorio() y operador.actualiza()
+- ver posibilidad de mejorar controlador.estado, ya que el código se repite
 - Implementar hilos para las demás operaciones en controlador;
 - Documentar todos los métodos como para reutilizar en las demás apps
