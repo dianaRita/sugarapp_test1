@@ -215,8 +215,20 @@ public class Operador {
     }
 
     /**
-     *
-     * @return
+     * Realiza una consulta de todos los datos en la base de datos.
+     * Devuelve un map con resultados de la consulta y del an&aacute;lisis de tiempo y memoria
+     * <br>Para el tiempo:
+     * <br>tiempo: duraci&oacute;n de la ejecuci&oacute;n de la operaci&oacute;n (ms).
+     * <br>cantCon: cantidad de registros recuperados.
+     * <br>Para la memoria:
+     * <br>memAsigApp: la cantidad de memoria que ART asigna a la aplicaci&oacute;n (mb).
+     * <br>memUsadaApp: la cantidad de memoria utilizada por la aplicaci&oacute;n de la memoria asignada (mb).
+     * <br>porcMemUsadaApp: porcentaje de memoria utilizada de la parcela asignada.
+     * <br>memTotDevice: la cantidad total de memoria del dispositivo (mb).
+     * <br>memUsadaDevice: la cantidad de memoria utilizada por todos los procesos en el dispositivo (mb).
+     * <br>porcMemUsadaDevice:  porcentaje de memoria utilizada por todos los procesos en el dispositivo.
+     * <br>datos:  string con los registros recuperados.
+     * @return rstl {@link Map<String, String>} Resultados.
      */
     public Map<String,String> consulta(){
 
@@ -241,7 +253,7 @@ public class Operador {
                  .append(", real: ").append(d.getReal())
                  .append(", date: ").append(d.getNumDate())
                  .append(", boolean: ").append(d.getNumBool())
-                 .append(" }, ");
+                 .append(" }\n");
         }
 
         Map<String,String> rslt = new HashMap<>();
